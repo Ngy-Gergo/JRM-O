@@ -94,3 +94,16 @@ Every render uses the same simple scene:
 The generator uses deterministic auto-framing based on the rotated model's projected bounding box. Front and rear renders use a tighter margin so the vehicle appears larger. Side renders use a slightly wider margin to reduce horizontal clipping. No random camera placement or automatic cropping is used.
 
 The only changing variables are the 3D model and the yaw angle.
+
+## Dataset Inspection
+
+After generating a dataset, inspect it before using it for training:
+
+```bash
+python src/dataset_tools/inspect_dataset.py --dataset-dir generated_dataset
+```
+
+The inspector checks metadata/image consistency, class folders, label counts,
+model counts, missing images, orphan images, invalid labels, unsafe paths, and
+simple class imbalance. It exits with code `0` for valid datasets or warnings
+only, and code `1` for critical validation issues.
