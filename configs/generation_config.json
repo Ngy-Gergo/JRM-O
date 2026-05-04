@@ -1,0 +1,17 @@
+{
+  "angle_step": 10,
+  "image_size": 512,
+  "render_samples": 64,
+  "target_model_size": 3.0,
+  "front_rear_camera_height": 1.15,
+  "front_rear_camera_target_z": 0.8,
+  "side_camera_height": 1.15,
+  "side_camera_target_z": 0.8,
+  "camera_lens": 50,
+  "front_rear_margin": 1.1,
+  "side_margin": 1.15,
+  "light_location": [0, -4, 6],
+  "light_energy": 600,
+  "light_size": 5,
+  "background_color": [1.0, 1.0, 1.0]
+}
