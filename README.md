@@ -2,7 +2,7 @@
 
 This project generates a clean synthetic image dataset in Blender for vehicle orientation classification from a single image.
 
-The current scope is intentionally limited to deterministic dataset generation. It does not implement neural network training, dataset splitting, augmentation, domain randomization, randomized backgrounds, randomized lighting, randomized cameras, texture randomization, blur, noise, or complex scene variation.
+The current scope includes deterministic dataset generation, dataset inspection, and a v0.1 sanity-check PyTorch training pipeline. It does not implement domain randomization, randomized backgrounds, randomized lighting, randomized cameras, texture randomization, blur, noise, or complex scene variation.
 
 ## Project Structure
 
@@ -107,3 +107,45 @@ The inspector checks metadata/image consistency, class folders, label counts,
 model counts, missing images, orphan images, invalid labels, unsafe paths, and
 simple class imbalance. It exits with code `0` for valid datasets or warnings
 only, and code `1` for critical validation issues.
+
+## Training Pipeline v0.1
+
+This is a sanity-check training pipeline, not final research-quality benchmarking.
+With only a few vehicle models, results are not final. Later, when more models
+are available, use a model-level train/validation/test split instead of the
+current image-level split.
+
+Install the training dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Create one deterministic split that both models will share:
+
+```bash
+python src/training/split_dataset.py --dataset-dir generated_dataset --output-dir splits --seed 42
+```
+
+Train and evaluate ResNet18:
+
+```bash
+python src/training/train.py --model-name resnet18 --dataset-dir generated_dataset --splits-dir splits --output-dir training_runs/resnet18_run_001 --epochs 10 --batch-size 16
+python src/training/evaluate.py --model-name resnet18 --dataset-dir generated_dataset --splits-dir splits --checkpoint training_runs/resnet18_run_001/best_model.pt
+```
+
+Train and evaluate MobileNetV3 Small:
+
+```bash
+python src/training/train.py --model-name mobilenet_v3_small --dataset-dir generated_dataset --splits-dir splits --output-dir training_runs/mobilenet_v3_small_run_001 --epochs 10 --batch-size 16
+python src/training/evaluate.py --model-name mobilenet_v3_small --dataset-dir generated_dataset --splits-dir splits --checkpoint training_runs/mobilenet_v3_small_run_001/best_model.pt
+```
+
+Compare the two runs:
+
+```bash
+python src/training/compare_models.py --runs training_runs/resnet18_run_001 training_runs/mobilenet_v3_small_run_001 --output training_runs/model_comparison.csv
+```
+
+Both models use the same split, preprocessing, optimizer, learning rate, batch
+size, and epoch count by default so the comparison is fair for this v0.1 check.
