@@ -149,3 +149,14 @@ python src/training/compare_models.py --runs training_runs/resnet18_run_001 trai
 
 Both models use the same split, preprocessing, optimizer, learning rate, batch
 size, and epoch count by default so the comparison is fair for this v0.1 check.
+
+## Project cleanup
+
+Remove generated project artifacts with:
+
+```bash
+python src/project_tools/project_clean.py
+```
+
+The cleanup utility only removes generated artifacts. It never removes source
+code, configs, README, requirements, Git data, or model assets.
