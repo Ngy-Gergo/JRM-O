@@ -121,33 +121,49 @@ Install the training dependencies:
 pip install -r requirements.txt
 ```
 
-Create one deterministic split that both models will share:
+Create one deterministic split that all models will share:
 
 ```bash
 python src/training/split_dataset.py --dataset-dir generated_dataset --output-dir splits --seed 42
 ```
 
-Train and evaluate ResNet18:
+Train the supported models:
 
 ```bash
-python src/training/train.py --model-name resnet18 --dataset-dir generated_dataset --splits-dir splits --output-dir training_runs/resnet18_run_001 --epochs 10 --batch-size 16
-python src/training/evaluate.py --model-name resnet18 --dataset-dir generated_dataset --splits-dir splits --checkpoint training_runs/resnet18_run_001/best_model.pt
+python src/training/train.py --model-name resnet18 --dataset-dir generated_dataset --splits-dir splits --output-dir training_runs/resnet18_run_001 --epochs 10 --batch-size 16 --seed 42
+python src/training/train.py --model-name mobilenet_v3_small --dataset-dir generated_dataset --splits-dir splits --output-dir training_runs/mobilenet_v3_small_run_001 --epochs 10 --batch-size 16 --seed 42
+python src/training/train.py --model-name efficientnet_b0 --dataset-dir generated_dataset --splits-dir splits --output-dir training_runs/efficientnet_b0_run_001 --epochs 10 --batch-size 16 --seed 42
+python src/training/train.py --model-name densenet121 --dataset-dir generated_dataset --splits-dir splits --output-dir training_runs/densenet121_run_001 --epochs 10 --batch-size 16 --seed 42
 ```
 
-Train and evaluate MobileNetV3 Small:
+Evaluate the supported models:
 
 ```bash
-python src/training/train.py --model-name mobilenet_v3_small --dataset-dir generated_dataset --splits-dir splits --output-dir training_runs/mobilenet_v3_small_run_001 --epochs 10 --batch-size 16
-python src/training/evaluate.py --model-name mobilenet_v3_small --dataset-dir generated_dataset --splits-dir splits --checkpoint training_runs/mobilenet_v3_small_run_001/best_model.pt
+python src/training/evaluate.py --model-name resnet18 --dataset-dir generated_dataset --splits-dir splits --checkpoint training_runs/resnet18_run_001/best_model.pt --batch-size 16
+python src/training/evaluate.py --model-name mobilenet_v3_small --dataset-dir generated_dataset --splits-dir splits --checkpoint training_runs/mobilenet_v3_small_run_001/best_model.pt --batch-size 16
+python src/training/evaluate.py --model-name efficientnet_b0 --dataset-dir generated_dataset --splits-dir splits --checkpoint training_runs/efficientnet_b0_run_001/best_model.pt --batch-size 16
+python src/training/evaluate.py --model-name densenet121 --dataset-dir generated_dataset --splits-dir splits --checkpoint training_runs/densenet121_run_001/best_model.pt --batch-size 16
 ```
 
-Compare the two runs:
+Compare the four runs:
 
 ```bash
-python src/training/compare_models.py --runs training_runs/resnet18_run_001 training_runs/mobilenet_v3_small_run_001 --output training_runs/model_comparison.csv
+python src/training/compare_models.py --runs training_runs/resnet18_run_001 training_runs/mobilenet_v3_small_run_001 training_runs/efficientnet_b0_run_001 training_runs/densenet121_run_001 --output training_runs/model_comparison.csv
 ```
 
-Both models use the same split, preprocessing, optimizer, learning rate, batch
+Quickly verify model construction and output shape:
+
+```bash
+python -c "import torch; from src.training.model import SUPPORTED_MODELS, create_model; x=torch.randn(2,3,224,224); [print(name, create_model(name, num_classes=4, pretrained=False)(x).shape) for name in SUPPORTED_MODELS]"
+```
+
+Each model should print:
+
+```text
+torch.Size([2, 4])
+```
+
+All models use the same split, preprocessing, optimizer, learning rate, batch
 size, and epoch count by default so the comparison is fair for this v0.1 check.
 
 ## Project cleanup
