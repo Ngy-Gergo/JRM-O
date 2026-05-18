@@ -1,0 +1,13 @@
+{
+  "model_name": "efficientnet_b0",
+  "dataset_dir": "generated_dataset",
+  "splits_dir": "splits",
+  "output_dir": "training_runs\\efficientnet_b0_run_001",
+  "epochs": 10,
+  "batch_size": 16,
+  "lr": 0.0003,
+  "num_workers": 0,
+  "device": "cuda",
+  "seed": 42,
+  "pretrained": true
+}

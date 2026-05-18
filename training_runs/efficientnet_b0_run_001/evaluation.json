@@ -1,0 +1,43 @@
+{
+  "model_name": "efficientnet_b0",
+  "checkpoint": "training_runs\\efficientnet_b0_run_001\\best_model.pt",
+  "test_accuracy": 0.9642857142857143,
+  "per_class_accuracy": {
+    "approaching": 0.9714285714285714,
+    "leaving": 0.9714285714285714,
+    "moving_left": 0.9142857142857143,
+    "moving_right": 1.0
+  },
+  "labels": [
+    "approaching",
+    "leaving",
+    "moving_left",
+    "moving_right"
+  ],
+  "confusion_matrix": [
+    [
+      34,
+      0,
+      1,
+      0
+    ],
+    [
+      1,
+      34,
+      0,
+      0
+    ],
+    [
+      2,
+      0,
+      32,
+      1
+    ],
+    [
+      0,
+      0,
+      0,
+      35
+    ]
+  ]
+}

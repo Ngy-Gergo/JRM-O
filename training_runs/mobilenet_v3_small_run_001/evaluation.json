@@ -1,0 +1,43 @@
+{
+  "model_name": "mobilenet_v3_small",
+  "checkpoint": "training_runs\\mobilenet_v3_small_run_001\\best_model.pt",
+  "test_accuracy": 0.9071428571428571,
+  "per_class_accuracy": {
+    "approaching": 0.8857142857142857,
+    "leaving": 0.8857142857142857,
+    "moving_left": 0.8571428571428571,
+    "moving_right": 1.0
+  },
+  "labels": [
+    "approaching",
+    "leaving",
+    "moving_left",
+    "moving_right"
+  ],
+  "confusion_matrix": [
+    [
+      31,
+      1,
+      1,
+      2
+    ],
+    [
+      3,
+      31,
+      0,
+      1
+    ],
+    [
+      1,
+      0,
+      30,
+      4
+    ],
+    [
+      0,
+      0,
+      0,
+      35
+    ]
+  ]
+}

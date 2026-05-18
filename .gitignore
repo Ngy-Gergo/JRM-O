@@ -10,12 +10,9 @@ __pycache__/
 *.blend~
 
 # Generated datasets and render outputs
-generated_dataset/
 generated_dataset_*/
 *_dataset/
 *_dataset_test/
-splits/
-training_runs/
 
 # Common local environment files
 .venv/
