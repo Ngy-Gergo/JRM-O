@@ -166,6 +166,22 @@ torch.Size([2, 4])
 All models use the same split, preprocessing, optimizer, learning rate, batch
 size, and epoch count by default so the comparison is fair for this v0.1 check.
 
+## Plotting / Reporting
+
+Generate documentation-friendly PNG figures from existing training, evaluation,
+and comparison outputs. Run `compare_models.py` first so
+`training_runs/model_comparison.csv` exists.
+
+```bash
+python src/project_tools/generate_plots.py --runs training_runs/resnet18_run_001 training_runs/mobilenet_v3_small_run_001 training_runs/efficientnet_b0_run_001 training_runs/densenet121_run_001 --comparison training_runs/model_comparison.csv --output-dir training_runs/figures
+```
+
+Figures are saved under:
+
+```text
+training_runs/figures/
+```
+
 ## Project cleanup
 
 Remove generated project artifacts with:
