@@ -10,8 +10,6 @@ __pycache__/
 *.blend~
 
 # Generated datasets and render outputs
-generated_dataset_*/
-*_dataset/
 *_dataset_test/
 
 # Common local environment files
