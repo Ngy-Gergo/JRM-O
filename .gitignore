@@ -13,8 +13,6 @@ __pycache__/
 generated_dataset_*/
 *_dataset/
 *_dataset_test/
-splits/
-training_runs/
 
 # Common local environment files
 .venv/

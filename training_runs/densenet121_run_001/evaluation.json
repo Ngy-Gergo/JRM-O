@@ -1,0 +1,43 @@
+{
+  "model_name": "densenet121",
+  "checkpoint": "training_runs\\densenet121_run_001\\best_model.pt",
+  "test_accuracy": 0.9928571428571429,
+  "per_class_accuracy": {
+    "approaching": 0.9714285714285714,
+    "leaving": 1.0,
+    "moving_left": 1.0,
+    "moving_right": 1.0
+  },
+  "labels": [
+    "approaching",
+    "leaving",
+    "moving_left",
+    "moving_right"
+  ],
+  "confusion_matrix": [
+    [
+      34,
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      35,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      35,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      35
+    ]
+  ]
+}

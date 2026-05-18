@@ -1,0 +1,54 @@
+[
+  {
+    "run_dir": "training_runs\\resnet18_run_001",
+    "model_name": "resnet18",
+    "best_validation_accuracy": 0.9545454545454546,
+    "final_validation_accuracy": 0.9393939393939394,
+    "test_accuracy": 0.9857142857142858,
+    "per_class_accuracy": {
+      "approaching": 0.9714285714285714,
+      "leaving": 0.9714285714285714,
+      "moving_left": 1.0,
+      "moving_right": 1.0
+    }
+  },
+  {
+    "run_dir": "training_runs\\mobilenet_v3_small_run_001",
+    "model_name": "mobilenet_v3_small",
+    "best_validation_accuracy": 0.8863636363636364,
+    "final_validation_accuracy": 0.8787878787878788,
+    "test_accuracy": 0.9071428571428571,
+    "per_class_accuracy": {
+      "approaching": 0.8857142857142857,
+      "leaving": 0.8857142857142857,
+      "moving_left": 0.8571428571428571,
+      "moving_right": 1.0
+    }
+  },
+  {
+    "run_dir": "training_runs\\efficientnet_b0_run_001",
+    "model_name": "efficientnet_b0",
+    "best_validation_accuracy": 0.9696969696969697,
+    "final_validation_accuracy": 0.9621212121212122,
+    "test_accuracy": 0.9642857142857143,
+    "per_class_accuracy": {
+      "approaching": 0.9714285714285714,
+      "leaving": 0.9714285714285714,
+      "moving_left": 0.9142857142857143,
+      "moving_right": 1.0
+    }
+  },
+  {
+    "run_dir": "training_runs\\densenet121_run_001",
+    "model_name": "densenet121",
+    "best_validation_accuracy": 0.9924242424242424,
+    "final_validation_accuracy": 0.9621212121212122,
+    "test_accuracy": 0.9928571428571429,
+    "per_class_accuracy": {
+      "approaching": 0.9714285714285714,
+      "leaving": 1.0,
+      "moving_left": 1.0,
+      "moving_right": 1.0
+    }
+  }
+]

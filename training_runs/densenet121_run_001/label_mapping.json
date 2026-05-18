@@ -1,0 +1,14 @@
+{
+  "label_to_index": {
+    "approaching": 0,
+    "leaving": 1,
+    "moving_left": 2,
+    "moving_right": 3
+  },
+  "index_to_label": {
+    "0": "approaching",
+    "1": "leaving",
+    "2": "moving_left",
+    "3": "moving_right"
+  }
+}

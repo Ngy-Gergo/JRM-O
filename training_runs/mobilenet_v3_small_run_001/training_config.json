@@ -1,0 +1,13 @@
+{
+  "model_name": "mobilenet_v3_small",
+  "dataset_dir": "generated_dataset",
+  "splits_dir": "splits",
+  "output_dir": "training_runs\\mobilenet_v3_small_run_001",
+  "epochs": 10,
+  "batch_size": 16,
+  "lr": 0.0003,
+  "num_workers": 0,
+  "device": "cuda",
+  "seed": 42,
+  "pretrained": true
+}

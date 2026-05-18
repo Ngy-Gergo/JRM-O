@@ -1,0 +1,5 @@
+true_label,approaching,leaving,moving_left,moving_right
+approaching,34,0,1,0
+leaving,0,35,0,0
+moving_left,0,0,35,0
+moving_right,0,0,0,35
